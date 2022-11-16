@@ -47,7 +47,7 @@ class SongViewSet(viewsets.ModelViewSet):
 @api_view(['DELETE'])
 def RemoveFromAlbum(request, alb_id, sng_id):
     """
-    remove song from album (with serial number)
+    remove song from album
     """
 
     try:
@@ -61,7 +61,7 @@ def RemoveFromAlbum(request, alb_id, sng_id):
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-
+'''
 @api_view(['PUT'])
 def AddToAlbum(request, alb_id, sng_id, order):
     """
@@ -74,6 +74,13 @@ def AddToAlbum(request, alb_id, sng_id, order):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+'''
+
+class AddToAlbum(generics.CreateAPIView):
+    """
+    add song to album (with serial number)
+    """
+    serializer_class = SongInAlbumSerializer
 
 
 
@@ -83,7 +90,7 @@ def AddToAlbum(request, alb_id, sng_id, order):
 
 class AlbumsByArtist(generics.ListAPIView):
     """
-    A view to get all albums by an artist
+    A view to get all albums by an artist (by id)
     """
     serializer_class = AlbumSerializer
 
@@ -92,6 +99,7 @@ class AlbumsByArtist(generics.ListAPIView):
         artist = self.kwargs['artist']
 
         return Album.objects.filter(artist=artist)
+
 
 
 class SongsByAlbum(generics.ListAPIView):
