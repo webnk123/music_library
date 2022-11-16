@@ -1,10 +1,10 @@
-from .models import Artist, Album, Song, SongInAlbum
 from rest_framework import viewsets
-from .serializers import ArtistSerializer, AlbumSerializer, SongSerializer, SongInAlbumSerializer
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from .models import Artist, Album, Song, SongInAlbum
+from .serializers import ArtistSerializer, AlbumSerializer, SongSerializer, SongInAlbumSerializer
 
 
 
@@ -118,9 +118,4 @@ class SongsByAlbum(generics.ListAPIView):
         sia = SongInAlbum.objects.filter(album=album)
         
 
-
         return sia
-
-
-
-
