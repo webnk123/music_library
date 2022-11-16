@@ -61,6 +61,10 @@ def RemoveFromAlbum(request, alb_id, sng_id):
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+
+
+
+
 '''
 @api_view(['PUT'])
 def AddToAlbum(request, alb_id, sng_id, order):
@@ -106,16 +110,16 @@ class SongsByAlbum(generics.ListAPIView):
     """
     A view to get all songs in an album by album id
     """
-    serializer_class = SongSerializer
+    serializer_class = SongInAlbumSerializer
 
     def get_queryset(self):
 
         album = self.kwargs['album']
         sia = SongInAlbum.objects.filter(album=album)
-        songs = Song.objects.filter(songinalbum__in = sia)
+        
 
 
-        return songs
+        return sia
 
 
 
