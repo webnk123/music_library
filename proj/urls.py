@@ -31,16 +31,12 @@ router.register(r'songs', views.SongViewSet)
 
 
 urlpatterns = [
-   
    path('', include(router.urls)),
-
    path('songs/by/<str:album>', views.SongsByAlbum.as_view()),
    path('albums/by/<int:artist>', views.AlbumsByArtist.as_view()),
-
    path('RemoveFromAlbum/album/<int:alb_id>/song/<int:sng_id>', views.RemoveFromAlbum),
-#   path('AddToAlbum/album/<int:alb_id>/song/<int:sng_id>/order/<int:order>', views.AddToAlbum),
+#  path('AddToAlbum/album/<int:alb_id>/song/<int:sng_id>/order/<int:order>', views.AddToAlbum),
    path('AddToAlbum/',  views.AddToAlbum.as_view()),
-
    path('swagger.json', schema_view.without_ui(cache_timeout=0), name='schema-json'),
    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

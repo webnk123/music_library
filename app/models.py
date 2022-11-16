@@ -47,4 +47,3 @@ class SongInAlbum(models.Model):
         # one album cant have same song at different serial numbers
         unique_together = (("song", "album"),)
         ordering = ['serial_number']
-
