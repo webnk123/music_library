@@ -93,5 +93,5 @@ class SongsByAlbum(generics.ListAPIView):
 
         album = self.kwargs['album']
         sia = SongInAlbum.objects.filter(album=album)
-        
+
         return sia

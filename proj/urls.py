@@ -10,7 +10,8 @@ schema_view = get_schema_view(
    openapi.Info(
       title="artists api",
       default_version='v 0.1',
-      description="""api for CRUD operations on artists, albums and songs,
+      description="""
+      api for CRUD operations on artists, albums and songs,
        has 4 non generic views. 
        1. for getting all songs in an album 
        2. to get all albums by author 
