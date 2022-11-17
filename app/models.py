@@ -43,6 +43,7 @@ class SongInAlbum(models.Model):
     serial_number = models.PositiveIntegerField()
 
     class Meta:
-        # one album cant have same song at different serial numbers
-        unique_together = (("song", "album"),)
+        # one album cant have same song twice unique_together = (song, album)
+        # one album can't have same serial number twice unique together = (album, serial_number)
+        unique_together = (("song", "album"),("album", "serial_number"))
         ordering = ['serial_number']
