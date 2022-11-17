@@ -40,7 +40,6 @@ class Song(models.Model):
 class SongInAlbum(models.Model):
     song = models.ForeignKey('Song', on_delete=models.CASCADE)
     album = models.ForeignKey('Album', on_delete=models.CASCADE, related_name='songs')
-    # album can't have 2 songs with same serial number
     serial_number = models.PositiveIntegerField()
 
     class Meta:
